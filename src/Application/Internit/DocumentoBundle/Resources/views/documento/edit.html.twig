@@ -1,0 +1,53 @@
+{% extends "@ApplicationProjectContent/base/base_web.html.twig" %}
+
+{% block title %}
+    {{ title }} Edit
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascriptsFooter %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1> {{ title }} Edit</h1>
+
+
+        {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.titulo, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.subtitulo, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.descricao, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Enviar</button>
+
+        {{ form_end(form) }}
+
+
+        <a style="margin-top: 10px;" class="btn btn-secondary" href="{{ path('web_documento_list') }}">Voltar</a>
+
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends "@ApplicationProjectContent/base/base_web2.html.twig" %}
+
+{% block title %}
+    {{ title }} Cadastrar
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascriptsFooter %}
+    {{ parent() }}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="container">
+
+
+        <div class="card card-flush py-4" style="margin-top: 30px;">
+            <!--begin::Card header-->
+            <div class="card-header">
+                <div class="card-title">
+                    <h2>Novo Documento</h2>
+                </div>
+                <div>
+                    <a style="margin-top: 10px;" class="btn btn-secondary" href="{{ path('web_documento_list') }}">Voltar</a>
+
+                </div>
+
+            </div>
+            <!--end::Card header-->
+            <!--begin::Card body-->
+            <div class="card-body pt-0">
+
+
+                {{ form_start(form) }}
+
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(form) }}
+                </div>
+
+                {{ form_end(form) }}
+
+            </div>
+            <!--end::Card header-->
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
