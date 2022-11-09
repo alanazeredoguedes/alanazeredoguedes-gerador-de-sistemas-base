@@ -27,24 +27,9 @@ return [
     Nelmio\ApiDocBundle\NelmioApiDocBundle::class => ['all' => true],
     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
     SimpleThings\EntityAudit\SimpleThingsEntityAuditBundle::class => ['all' => true],
-
-    /** Base Bundles */
     App\Application\Project\ContentBundle\ApplicationProjectContentBundle::class => ['all' => true],
     App\Application\Project\SecurityAdminBundle\ApplicationProjectSecurityAdminBundle::class => ['all' => true],
     App\Application\Project\SecurityUserBundle\ApplicationProjectSecurityUserBundle::class => ['all' => true],
-
-    /** System Project Bundles */
     App\Application\Internit\CursoBundle\ApplicationInternitCursoBundle::class => ['all' => true],
     App\Application\Internit\DocumentoBundle\ApplicationInternitDocumentoBundle::class => ['all' => true],
-//    App\Application\Internit\PalavraChaveBundle\ApplicationInternitPalavraChaveBundle::class => ['all' => true],
-//    App\Application\Internit\TipoDocumentoBundle\ApplicationInternitTipoDocumentoBundle::class => ['all' => true],
-//
-
-
-
-
-
-
-
-
 ];
