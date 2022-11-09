@@ -3,6 +3,12 @@
 # Instala as dependências do projeto
 ./run composer install
 
+# Gera chaves públicas/privadas para uso na aplicação - API Lexik
+./run bin/console lexik:jwt:generate-keypair
+
+# Da permissão de escrita e leitura pasta /var/*
+./run chmod 777 /var/ -R
+
 # Cria o banco de dados
 ./run bin/console doctrine:database:create
 

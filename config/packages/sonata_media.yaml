@@ -25,11 +25,11 @@ sonata_media:
                 #big: { width: 500, quality: 70 }
     cdn:
         server:
-            path: /uploads/media
+            path: /uploads
 
     filesystem:
         local:
-            directory: '%kernel.project_dir%/public/uploads/media'
+            directory: '%kernel.project_dir%/public/uploads'
             create: false
 
     providers:

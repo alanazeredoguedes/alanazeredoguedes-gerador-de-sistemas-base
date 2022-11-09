@@ -25,11 +25,6 @@ use OpenApi\Attributes as OA;
 #[Route('/api', name: 'api_auth_')]
 class AuthApiController extends BaseApiController
 {
-    private ?JWTTokenManagerInterface $JWTManager = null;
-
-    public function __construct(JWTTokenManagerInterface $jwt = null) {
-        $this->JWTManager = $jwt;
-    }
 
     #[OA\Response(
         response: 200,
@@ -73,7 +68,7 @@ class AuthApiController extends BaseApiController
 
         //dd($user);
 
-        $token = $this->JWTManager->create($user);
+        $token = $this->JWTTokenManager->create($user);
 
         return $this->json(['token' => $token]);
     }
@@ -113,8 +108,6 @@ class AuthApiController extends BaseApiController
 
         return $this->json($data);
     }
-
-
 
 
 

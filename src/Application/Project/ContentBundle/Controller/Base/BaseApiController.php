@@ -4,6 +4,7 @@ namespace App\Application\Project\ContentBundle\Controller\Base;
 
 use App\Application\Project\ContentBundle\Service\ApiACL;
 use App\Application\Project\ContentBundle\Service\SerializerObjects;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Sonata\MediaBundle\Provider\Pool;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +15,8 @@ class BaseApiController extends AbstractController
 
     public function __construct(
         protected ApiACL $apiACL,
-        protected Pool $providerPool
+        protected Pool $providerPool,
+        protected JWTTokenManagerInterface $JWTTokenManager,
     )
     {
         $this->serializerObjects = new SerializerObjects(providerPool: $this->providerPool);
@@ -80,7 +82,7 @@ class BaseApiController extends AbstractController
      */
     public function validateAccess(string $actionName): void
     {
-        if($this->isGranted("ROLE_SUPER_ADMIN"))
+        if($this->isGranted("ROLE_SUPER_API"))
             return;
 
         $class = new \ReflectionClass($this);

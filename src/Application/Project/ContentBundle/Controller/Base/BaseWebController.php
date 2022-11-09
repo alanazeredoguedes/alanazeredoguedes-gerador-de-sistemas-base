@@ -19,13 +19,12 @@ class BaseWebController extends AbstractController
      */
     public function validateAccess(string $actionName): void
     {
-        if($this->isGranted("ROLE_SUPER_ADMIN"))
+        if($this->isGranted("ROLE_SUPER_WEB"))
             return;
 
         $class = new \ReflectionClass($this);
 
         $roleValidate = '#_ERROR_#';
-
 
         foreach ($this->webACL->getWebGroupRoles() as $groupRoles) {
 

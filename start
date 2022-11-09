@@ -1,7 +1,12 @@
 #! /bin/bash
 
 docker compose down
-docker compose up -d --build
+
+# Roda projeto atachado no terminal
+docker compose up --build
+
+# Roda projeto em background
+#docker compose up -d --build
 
 
 
