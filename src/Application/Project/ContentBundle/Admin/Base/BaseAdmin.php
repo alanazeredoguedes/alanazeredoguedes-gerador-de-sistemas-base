@@ -17,7 +17,6 @@ class BaseAdmin extends AbstractAdmin
 {
     protected UserPasswordHasherInterface $passwordHasher;
     protected ?UserInterface $user = null;
-    protected RolesIdentifierService $rolesIdentifierService;
     protected AdminACL $adminACL;
     protected ApiACL $apiACL;
     protected WebACL $webACL;
