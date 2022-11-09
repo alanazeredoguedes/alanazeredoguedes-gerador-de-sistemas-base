@@ -3,9 +3,5 @@
 docker compose down
 docker compose up -d --build
 
-./run composer install
-./run bin/console doctrine:database:create
-./run bin/console doctrine:schema:update --force
-./run bin/console assets:install --symlink
-./run bin/console cache:clear
+
 
