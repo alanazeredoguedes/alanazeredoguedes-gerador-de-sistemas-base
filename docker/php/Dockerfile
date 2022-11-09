@@ -1,37 +1,29 @@
-FROM php:8.1.0-fpm
-
-# Arguments defined in docker-compose.yml
-#ARG user
-#ARG uid
+FROM php:8.1-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
+    zlib1g-dev \
+    libzip-dev \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
     zip \
     unzip
 
-#RUN apt-get install symfony-cli
-
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install mysqli pdo pdo_mysql mbstring exif pcntl bcmath gd zip
 
 # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Create system user to run Composer and Artisan Commands
-#RUN useradd -G www-data,root -u $uid -d /home/$user $user
-#RUN mkdir -p /home/$user/.composer && \
-#    chown -R $user:$user /home/$user
-
+# Set TimeZone
+RUN mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+RUN sed -ri -e 's!;date.timezone =!date.timezone = "America/Sao_Paulo"!g' /usr/local/etc/php/php.ini
 
 # Set working directory
-WORKDIR /var/www
-
-#USER $user
+#WORKDIR /var/www/html/
