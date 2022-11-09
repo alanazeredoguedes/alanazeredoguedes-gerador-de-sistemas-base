@@ -7,22 +7,32 @@ services:
     build:
       context: ./docker/php/
       dockerfile: Dockerfile
-    image: app-php-apache-81
-    container_name: app-gerador-de-sistemas-base
+    image: app-php81
+    container_name: gerador-de-sistemas-base-app
     restart: unless-stopped
-    ports:
-      - "9003:80"
-    working_dir: /var/www/html
+    working_dir: /var/www/
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www
     networks:
       - network-project
 
 
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: gerador-de-sistemas-base-app-nginx
+    restart: unless-stopped
+    ports:
+      - "9003:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+    networks:
+      - network-project
+
  # Imagem Mysql Versão 8.0
   db:
     image: mysql:8.0
-    container_name: mysql-gerador-de-sistemas-base
+    container_name: gerador-de-sistemas-base-app-mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
