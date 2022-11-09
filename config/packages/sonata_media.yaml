@@ -17,8 +17,8 @@ sonata_media:
                 - sonata.media.provider.file
                 #- sonata.media.provider.vimeo
             formats:
-                #small: { width: 100, quality: 70 }
-                #medium: { width: 400, quality: 70 }
+                small: { width: 100, quality: 70 }
+                medium: { width: 400, quality: 70 }
                 #big: { width: 1000, quality: 70 }
                 #icon: { width: 32, quality: 70, resizer: your.custom.resizer, resizer_options: { custom_crop: true } }
                 #small: { width: 100, quality: 70 }
@@ -42,23 +42,23 @@ sonata_media:
 #            thumbnail: sonata.media.thumbnail.format
 #            allowed_extensions: [ 'pdf', 'txt', 'rtf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pttx', 'odt', 'odg', 'odp', 'ods', 'odc', 'odf', 'odb', 'csv', 'xml' ]
 #            allowed_mime_types: [ 'application/pdf', 'application/x-pdf', 'application/rtf', 'text/html', 'text/rtf', 'text/plain' ]
-
-        image:
-            service: sonata.media.provider.image
-            resizer: sonata.media.resizer.simple # sonata.media.resizer.square, sonata.media.resizer.crop
-            filesystem: sonata.media.filesystem.local
-            cdn: sonata.media.cdn.server
-            generator: sonata.media.generator.default
-            thumbnail: sonata.media.thumbnail.format
-            allowed_extensions: [ 'jpg', 'png', 'jpeg' ]
-            allowed_mime_types: [ 'image/jpeg', 'image/jpeg', 'image/png', 'image/x-png' ]
-
-        youtube:
-            service: sonata.media.provider.youtube
-            resizer: sonata.media.resizer.simple
-            filesystem: sonata.media.filesystem.local
-            cdn: sonata.media.cdn.server
-            generator: sonata.media.generator.default
-            thumbnail: sonata.media.thumbnail.format
-            html5: false
+#
+#        image:
+#            service: sonata.media.provider.image
+#            resizer: sonata.media.resizer.simple # sonata.media.resizer.square, sonata.media.resizer.crop
+#            filesystem: sonata.media.filesystem.local
+#            cdn: sonata.media.cdn.server
+#            generator: sonata.media.generator.default
+#            thumbnail: sonata.media.thumbnail.format
+#            allowed_extensions: [ 'jpg', 'png', 'jpeg' ]
+#            allowed_mime_types: [ 'image/jpeg', 'image/jpeg', 'image/png', 'image/x-png' ]
+#
+#        youtube:
+#            service: sonata.media.provider.youtube
+#            resizer: sonata.media.resizer.simple
+#            filesystem: sonata.media.filesystem.local
+#            cdn: sonata.media.cdn.server
+#            generator: sonata.media.generator.default
+#            thumbnail: sonata.media.thumbnail.format
+#            html5: false
 

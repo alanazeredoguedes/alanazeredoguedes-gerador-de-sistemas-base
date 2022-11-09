@@ -12,6 +12,14 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
+RUN apt-get update; \
+    # Imagick extension
+    apt-get install -y libmagickwand-dev; \
+    pecl install imagick; \
+    docker-php-ext-enable imagick; \
+    # Success
+    true
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
