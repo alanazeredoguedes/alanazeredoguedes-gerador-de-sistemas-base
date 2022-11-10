@@ -117,19 +117,19 @@ string de consulta CGI padrão. Abaixo está uma lista completa dos operadores s
 
 | Operador         | Descrição       | Exemplo
 |------------------|-----------------| -----------------
-| `igual`          | Igualdade       | `name[eq]=Jimothy`
-| `diferente`      | Diferença       | `status[neq]=backlog`
-| `maior`          | Maior que       | `price[gt]=10`
-| `maior_ou_igual` | Maior ou igual  | `price[gte]=10`
-| `menor`          | Menor que       | `stock[lt]=100`
-| `menor_ou_igual` | Menor ou igual  | `stock[lte]=100`
-| `dentro`         | ~~Dentro~~      | `id[in][]=1&id[in][]=2`
-| `nao_dentro`     | ~~Não dentro~~  | `roles[not_in][]=ROLE_ADMIN`
-| `nulo`           | É nulo          | `subscribedAt[is_null]`
-| `nao_nulo`       | Não é nulo      | `subscribedAt[is_not_null]`
-| `comeca_com`     | Começa com      | `name[starts_with]=a`
-| `termina_com`    | Termina com     | `email[ends_with]=@gmail.com`
-| `contem`         | Contém          | `name[containts]=d`
+| `igual`          | Igualdade       | `name[igual]=Jimothy`
+| `diferente`      | Diferença       | `status[diferente]=backlog`
+| `maior`          | Maior que       | `price[maior]=10`
+| `maior_ou_igual` | Maior ou igual  | `price[maior_ou_igual]=10`
+| `menor`          | Menor que       | `stock[menor]=100`
+| `menor_ou_igual` | Menor ou igual  | `stock[menor_ou_igual]=100`
+| `dentro`         | ~~Dentro~~      | `id[dentro][]=1&id[dentro][]=2`
+| `nao_dentro`     | ~~Não dentro~~  | `roles[nao_dentro][]=ROLE_ADMIN`
+| `nulo`           | É nulo          | `subscribedAt[nulo]`
+| `nao_nulo`       | Não é nulo      | `subscribedAt[nao_nulo]`
+| `comeca_com`     | Começa com      | `name[comeca_com]=a`
+| `termina_com`    | Termina com     | `email[termina_com]=@gmail.com`
+| `contem`         | Contém          | `name[contem]=d`
 
 
 <br>

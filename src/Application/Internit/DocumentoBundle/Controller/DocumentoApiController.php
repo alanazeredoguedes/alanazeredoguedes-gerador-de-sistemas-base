@@ -56,9 +56,25 @@ class DocumentoApiController extends BaseApiController
     )]
     #[Route('', name: 'list', methods: ['GET'])]
     #[ACL\Api(enable: true, title: 'Listar', description: 'Listar todos os Documento')]
-    public function listAction(DocumentoRepository $repository, Request $request): Response
+    public function listAction(DocumentoRepository $repository, Request $request, ManagerRegistry $doctrine,): Response
     {
         $this->validateAccess(actionName: "listAction");
+
+
+        /*$em = $doctrine->getManager();
+        $i = 1;
+        while ($i < 100){
+            $doc = new Documento();
+            $doc->setTitulo('Documento ' . $i);
+            $doc->setSubtitulo('Documento ' . $i);
+            $doc->setTitulo('Subtitulo Documento ' . $i);
+            $doc->setDescricao('descrição documento ' . $i);
+
+            $em->persist($doc);
+            $em->flush();
+
+            $i++;
+        }*/
 
         $filter = new FilterDoctrine(
             repository:  $repository,

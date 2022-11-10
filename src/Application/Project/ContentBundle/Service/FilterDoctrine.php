@@ -2,6 +2,7 @@
 
 namespace App\Application\Project\ContentBundle\Service;
 
+use App\Application\Internit\DocumentoBundle\Repository\DocumentoRepository;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -23,7 +24,7 @@ class FilterDoctrine
      * @param array $attributesFilters
      */
     public function __construct(
-        protected $repository,
+        protected DocumentoRepository $repository,
         protected Request $request,
         protected array $attributesFilters,
     )
@@ -45,11 +46,7 @@ class FilterDoctrine
         /** Create Query Builder */
         $query = $this->repository->createQueryBuilder('d');
 
-        //$qb->where( $qb->expr()->gte('d.id', 5) );
-
         $query->addCriteria($this->criteria);
-
-        //dd($this->criteria);
 
         return $this->genetatePaginator($query);
     }
@@ -177,7 +174,7 @@ class FilterDoctrine
      */
     protected function eq(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->eq($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->eq($field, $value));
     }
 
     /**
@@ -188,7 +185,7 @@ class FilterDoctrine
      */
     protected function neq(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->neq($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->neq($field, $value));
     }
 
     /**
@@ -199,7 +196,7 @@ class FilterDoctrine
      */
     protected function gt(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->gt($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->gt($field, $value));
     }
 
     /**
@@ -210,7 +207,7 @@ class FilterDoctrine
      */
     protected function gte(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->gte($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->gte($field, $value));
     }
 
     /**
@@ -222,7 +219,7 @@ class FilterDoctrine
      */
     protected function lt(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->lt($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->lt($field, $value));
     }
 
     /**
@@ -234,7 +231,7 @@ class FilterDoctrine
      */
     protected function lte(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->lte($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->lte($field, $value));
     }
 
     /**
@@ -245,7 +242,7 @@ class FilterDoctrine
      */
     protected function is_null(string $field): void
     {
-        $this->criteria->where(Criteria::expr()->isNull($field));
+        $this->criteria->andWhere(Criteria::expr()->isNull($field));
     }
 
     /**
@@ -256,7 +253,7 @@ class FilterDoctrine
      */
     protected function is_not_null(string $field): void
     {
-        $this->criteria->where(Criteria::expr()->neq($field, null));
+        $this->criteria->andWhere(Criteria::expr()->neq($field, null));
     }
 
     /**
@@ -268,7 +265,7 @@ class FilterDoctrine
      */
     protected function starts_with(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->startsWith($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->startsWith($field, $value));
     }
 
     /**
@@ -280,7 +277,7 @@ class FilterDoctrine
      */
     protected function ends_with(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->endsWith($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->endsWith($field, $value));
     }
 
     /**
@@ -292,7 +289,7 @@ class FilterDoctrine
      */
     protected function contains(string $field, string $value): void
     {
-        $this->criteria->where(Criteria::expr()->contains($field, $value));
+        $this->criteria->andWhere(Criteria::expr()->contains($field, $value));
     }
 
     /**

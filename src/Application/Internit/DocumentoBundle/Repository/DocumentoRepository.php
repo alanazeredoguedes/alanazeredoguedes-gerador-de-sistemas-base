@@ -39,6 +39,35 @@ class DocumentoRepository extends ServiceEntityRepository
         }
     }
 
+    public function preEdit(){
+
+        $listEvents = [];
+        $listEvents[] = $this->sendMail();
+
+        return $listEvents;
+    }
+
+    /**
+     * @param $status = success | info | error
+     * @param $message
+     * @return object
+     */
+    public function createEventsMessage($status, $message)
+    {
+        return (object) [
+            'status' => $status,
+            'message'=> $message
+            ];
+    }
+
+
+    public function sendMail()
+    {
+        return $this->createEventsMessage('success', 'Email Enviado com sucesso!');
+
+    }
+
+
 //    /**
 //     * @return Documento[] Returns an array of Documento objects
 //     */
