@@ -8,5 +8,5 @@ docker compose down
 # Roda projeto em background
 docker compose up -d --build
 
-
-
+docker/init.sh
+#(cd docker/ && ./init.sh)
