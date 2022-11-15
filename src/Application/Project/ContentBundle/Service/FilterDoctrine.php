@@ -24,7 +24,7 @@ class FilterDoctrine
      * @param array $attributesFilters
      */
     public function __construct(
-        protected DocumentoRepository $repository,
+        protected mixed $repository,
         protected Request $request,
         protected array $attributesFilters,
     )
