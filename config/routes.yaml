@@ -47,17 +47,13 @@ application.internit.documentobundle.documento:
     resource: '@ApplicationInternitDocumentoBundle/Resources/config/routes/routes.yaml'
     prefix: /
 
-#application.internit.palavrachavebundle.palavrachave:
-#    resource: '@ApplicationInternitPalavraChaveBundle/Resources/config/routes/routes.yaml'
-#    prefix: /
-#
-#application.internit.tipodocumentobundle.tipodocumento:
-#    resource: '@ApplicationInternitTipoDocumentoBundle/Resources/config/routes/routes.yaml'
-#    prefix: /
-#
+application.internit.empreendimentobundle:
+    resource: '@ApplicationInternitEmpreendimentoBundle/Resources/config/routes/routes.yaml'
+    prefix: /
 
-
-
+application.internit.statusempreendimentobundle:
+    resource: '@ApplicationInternitStatusEmpreendimentoBundle/Resources/config/routes/routes.yaml'
+    prefix: /
 
 
 

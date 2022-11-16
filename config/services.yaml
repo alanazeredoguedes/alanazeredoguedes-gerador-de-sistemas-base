@@ -180,32 +180,32 @@ services:
                 icon: 'fa fa-solid fa-book',
             }
 
-#    internit.palavrachavebundle.palavrachave:
-#        class: App\Admin\DocumentoAdmin
-#        tags:
-#            - {
-#                name: sonata.admin,
-#                manager_type: orm,
-#                model_class: App\Entity\Documento,
-#                controller: App\Controller\DocumentoAdminController,
-#                show_in_dashboard: true,
-#                on_top: true,
-#                group: "Palavra Chave",
-#                label: Palavra Chave,
-#                icon: 'fa fa-solid fa-book',
-#            }
-#
-#    internit.tipodocumentobundle.tipodocumento:
-#        class: App\Admin\DocumentoAdmin
-#        tags:
-#            - {
-#                name: sonata.admin,
-#                manager_type: orm,
-#                model_class: App\Entity\Documento,
-#                controller: App\Controller\DocumentoAdminController,
-#                show_in_dashboard: true,
-#                on_top: true,
-#                group: "Tipo Documento",
-#                label: Tipo Documento,
-#                icon: 'fa fa-solid fa-book',
-#            }
+    internit.empreendimentobundle.empreendimento:
+        class: App\Application\Internit\EmpreendimentoBundle\Admin\EmpreendimentoAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Application\Internit\EmpreendimentoBundle\Entity\Empreendimento,
+                controller: App\Application\Internit\EmpreendimentoBundle\Controller\EmpreendimentoAdminController,
+                show_in_dashboard: true,
+                on_top: true,
+                group: "Empreendimento",
+                label: Empreendimento,
+                icon: 'fa fa-solid fa-book',
+            }
+
+    internit.statusempreendimentobundle.statusempreendimento:
+        class: App\Application\Internit\StatusEmpreendimentoBundle\Admin\StatusEmpreendimentoAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Application\Internit\StatusEmpreendimentoBundle\Entity\StatusEmpreendimento,
+                controller: App\Application\Internit\StatusEmpreendimentoBundle\Controller\StatusEmpreendimentoAdminController,
+                show_in_dashboard: true,
+                on_top: true,
+                group: "StatusEmpreendimento",
+                label: StatusEmpreendimento,
+                icon: 'fa fa-solid fa-book',
+            }

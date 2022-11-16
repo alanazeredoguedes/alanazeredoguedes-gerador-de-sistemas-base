@@ -2,6 +2,7 @@
 namespace App\Application\Internit\DocumentoBundle\Admin;
 
 use App\Application\Internit\CursoBundle\Entity\Curso;
+use App\Application\Internit\CursoBundle\Form\CursoType;
 use App\Application\Project\ContentBundle\Admin\Base\BaseAdmin;
 use App\Application\Internit\DocumentoBundle\Entity\Documento;
 use Knp\Menu\ItemInterface;
@@ -15,6 +16,7 @@ use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,15 +49,53 @@ final class DocumentoAdmin extends BaseAdmin
         $form->add('galeria', ModelListType::class,[
             'label' => 'Galeria: ',
         ]);
-        $form->add('curso', ModelType::class,[
+
+        $form
+            ->add('curso', CollectionType::class, [
+                'entry_type' =>  CursoType::class,
+                'prototype_data' => [
+                    // Prevents the "Delete" option from being displayed
+                    'delete' => false,
+                    'delete_options' => [
+                        // You may otherwise choose to put the field but hide it
+                        'type'         => HiddenType::class,
+                        // In that case, you need to fill in the options as well
+                        'type_options' => [
+                            'mapped'   => false,
+                            'required' => false,
+                        ]
+                    ]
+                ]
+            ], [
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'position',
+            ])
+        ;
+
+
+
+/*        $form->add('curso',CollectionType::class, [
+            'entry_type' =>  CursoType::class,
+            'allow_add' => true,
+            'prototype' => true,
+            'by_reference' => true,
+        ],[
+            'targetEntity'=> 'App\Application\Internit\CursoBundle\Entity\Curso',
+            'edit' => 'inline',
+            'inline' => 'table',
+            'sortable' => 'id',
+        ]);*/
+
+        /*$form->add('curso', ModelType::class,[
             'class' => Curso::class,
             'property' => 'nome',
             'label' => 'Curso',
             'required' => true,
-            'expanded' => false,
+            'expanded' => true,
             'btn_add' => false,
             'multiple' => false,
-        ]);
+        ]);*/
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagrid): void

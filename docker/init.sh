@@ -22,7 +22,7 @@
 ./run bin/console security:create-user user user@email.com user
 
 # Faz instalação dos assets
-./run bin/console assets:install --symlink
+./run bin/console assets:install
 
 # Limpa o cache do projeto
 ./run bin/console cache:clear

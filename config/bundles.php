@@ -32,4 +32,6 @@ return [
     App\Application\Project\SecurityUserBundle\ApplicationProjectSecurityUserBundle::class => ['all' => true],
     App\Application\Internit\CursoBundle\ApplicationInternitCursoBundle::class => ['all' => true],
     App\Application\Internit\DocumentoBundle\ApplicationInternitDocumentoBundle::class => ['all' => true],
+    App\Application\Internit\EmpreendimentoBundle\ApplicationInternitEmpreendimentoBundle::class => ['all' => true],
+    App\Application\Internit\StatusEmpreendimentoBundle\ApplicationInternitStatusEmpreendimentoBundle::class => ['all' => true],
 ];

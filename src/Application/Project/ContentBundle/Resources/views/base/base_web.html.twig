@@ -19,6 +19,34 @@
     {% endblock %}
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('web_dashboard') }}" style="padding-left: 10%;">
+            <h4>Aplicação Web</h4>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarText">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('web_dashboard') }}">
+                        Pagina Inicial
+                    </a>
+                </li>
+            </ul>
+
+            <span class="navbar-text">
+                {{ app.user.email }}
+            </span>
+
+            <span class="navbar-text">
+                 <a class="btn btn-active-primary" aria-current="page" href="{{ path('web_logout') }}">Sair</a>
+            </span>
+
+        </div>
+    </div>
+</nav>
+
+
 {% block body %}{% endblock %}
 </body>
 

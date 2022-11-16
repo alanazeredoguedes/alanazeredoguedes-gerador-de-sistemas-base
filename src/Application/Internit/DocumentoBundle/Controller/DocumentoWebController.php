@@ -5,7 +5,7 @@ namespace App\Application\Internit\DocumentoBundle\Controller;
 use App\Application\Project\ContentBundle\Attributes\Acl as ACL;
 use App\Application\Project\ContentBundle\Controller\Base\BaseWebController;
 use App\Application\Internit\DocumentoBundle\Entity\Documento;
-use App\Application\Internit\DocumentoBundle\Form\DocumentoType;
+use App\Application\Internit\DocumentoBundle\Form\EmpreendimentoType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +53,7 @@ class DocumentoWebController extends BaseWebController
         $entityManager = $doctrine->getManager();
 
         $documento = new Documento();
-        $form = $this->createForm(DocumentoType::class, $documento);
+        $form = $this->createForm(EmpreendimentoType::class, $documento);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
@@ -99,7 +99,7 @@ class DocumentoWebController extends BaseWebController
         if (!$data)
             return $this->redirectToRoute($this->getBaseRouter() . 'list');
 
-        $form = $this->createForm(DocumentoType::class, $data);
+        $form = $this->createForm(EmpreendimentoType::class, $data);
 
         $form->handleRequest($request);
 
