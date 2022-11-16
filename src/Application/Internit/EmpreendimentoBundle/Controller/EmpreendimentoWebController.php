@@ -53,20 +53,41 @@ class EmpreendimentoWebController extends BaseWebController
     {
         $this->validateAccess(actionName: 'createAction');
 
-        return $this->render($this->getBaseTemplate() . 'list.html.twig', [
+        $entityManager = $doctrine->getManager();
+
+        $empreendimento = new Empreendimento();
+        $form = $this->createForm(EmpreendimentoType::class, $empreendimento);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+
+            $empreendimento = $form->getData();
+
+            $entityManager->persist($empreendimento);
+            $entityManager->flush();
+
+            return $this->redirectToRoute($this->getBaseRouter() . 'list');
+        }
+
+        return $this->render($this->getBaseTemplate() . 'create.html.twig',[
             'title' => 'Criar Empreendimento',
+            'form' => $form->createView(),
         ]);
+
     }
 
-    #[Route('/{id}/show', name: 'show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'show', methods: ['GET', 'POST'])]
     #[ACL\Web(enable: true, title: 'Visualizar', description: 'Visualiza Empreendimento')]
     public function showAction(ManagerRegistry $doctrine, Request $request, int $id): Response
     {
         $this->validateAccess(actionName: 'showAction');
 
+        $empreendimento = $doctrine->getRepository($this->getRepository())->find($id);
+        $form = $this->createForm(EmpreendimentoType::class, $empreendimento);
 
-        return $this->render($this->getBaseTemplate() . 'list.html.twig', [
+        return $this->render($this->getBaseTemplate() . 'show.html.twig',[
             'title' => 'Visualizar Empreendimento',
+            'form' => $form->createView(),
         ]);
     }
 
@@ -75,9 +96,25 @@ class EmpreendimentoWebController extends BaseWebController
     public function editAction(ManagerRegistry $doctrine, Request $request, int $id): Response
     {
         $this->validateAccess(actionName: 'editAction');
+        $entityManager = $doctrine->getManager();
 
-        return $this->render($this->getBaseTemplate() . 'list.html.twig', [
+        $empreendimento = $doctrine->getRepository($this->getRepository())->find($id);
+        $form = $this->createForm(EmpreendimentoType::class, $empreendimento);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+
+            $empreendimento = $form->getData();
+
+            $entityManager->persist($empreendimento);
+            $entityManager->flush();
+
+            return $this->redirectToRoute($this->getBaseRouter() . 'list');
+        }
+
+        return $this->render($this->getBaseTemplate() . 'edit.html.twig',[
             'title' => 'Editar Empreendimento',
+            'form' => $form->createView(),
         ]);
     }
 
@@ -87,6 +124,17 @@ class EmpreendimentoWebController extends BaseWebController
     {
         $this->validateAccess(actionName: 'deleteAction');
 
+        $entityManager = $doctrine->getManager();
+
+        $data = $entityManager->getRepository($this->getRepository())->find($id);
+
+        if (!$data)
+            return $this->redirectToRoute($this->getBaseRouter() . 'list');
+
+        $entityManager->remove($data);
+        $entityManager->flush();
+
+        return $this->redirectToRoute($this->getBaseRouter() . 'list');
     }
 
 }

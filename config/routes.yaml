@@ -36,17 +36,11 @@ app.swagger:
     defaults: { _controller: nelmio_api_doc.controller.swagger }
 
 
-
-
 ###############################################################################
 #application.internit.cursobundle.curso:
 #    resource: '@ApplicationInternitCursoBundle/Resources/config/routes/routes.yaml'
 #    prefix: /
 #
-application.internit.documentobundle.documento:
-    resource: '@ApplicationInternitDocumentoBundle/Resources/config/routes/routes.yaml'
-    prefix: /
-
 application.internit.empreendimentobundle:
     resource: '@ApplicationInternitEmpreendimentoBundle/Resources/config/routes/routes.yaml'
     prefix: /

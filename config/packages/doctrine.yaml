@@ -52,8 +52,6 @@ doctrine:
             ###########################################################
             ApplicationInternitEmpreendimentoBundle: ~
             ApplicationInternitStatusEmpreendimentoBundle: ~
-            ApplicationInternitCursoBundle: ~
-            ApplicationInternitDocumentoBundle: ~
 #            ApplicationInternitPalavraChaveBundle: ~
 #            ApplicationInternitTipoDocumentoBundle: ~
 #

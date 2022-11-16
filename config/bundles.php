@@ -30,8 +30,6 @@ return [
     App\Application\Project\ContentBundle\ApplicationProjectContentBundle::class => ['all' => true],
     App\Application\Project\SecurityAdminBundle\ApplicationProjectSecurityAdminBundle::class => ['all' => true],
     App\Application\Project\SecurityUserBundle\ApplicationProjectSecurityUserBundle::class => ['all' => true],
-    App\Application\Internit\CursoBundle\ApplicationInternitCursoBundle::class => ['all' => true],
-    App\Application\Internit\DocumentoBundle\ApplicationInternitDocumentoBundle::class => ['all' => true],
     App\Application\Internit\EmpreendimentoBundle\ApplicationInternitEmpreendimentoBundle::class => ['all' => true],
     App\Application\Internit\StatusEmpreendimentoBundle\ApplicationInternitStatusEmpreendimentoBundle::class => ['all' => true],
 ];

@@ -2,7 +2,10 @@
 
 namespace App\Application\Internit\EmpreendimentoBundle\Form;
 
+use App\Application\Internit\EmpreendimentoBundle\Entity\Empreendimento;
+use App\Application\Internit\StatusEmpreendimentoBundle\Entity\StatusEmpreendimento;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -33,10 +36,13 @@ class EmpreendimentoType extends AbstractType
         $builder->add('visivel', CheckboxType::class, [
             'label' => 'Visivel',
             'required' => false,
-            'attr' => ['class' => 'form-control mb-2'],
+            //'attr' => ['class' => 'form-control'],
         ]);
 
-        $builder->add('status', ModelType::class, [
+
+        $builder->add('status', EntityType::class, [
+            'class' => StatusEmpreendimento::class,
+            'choice_label' => 'status',
             'label' => 'Status',
             'required' => false,
             'attr' => ['class' => 'form-control mb-2'],
