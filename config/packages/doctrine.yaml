@@ -44,6 +44,7 @@ doctrine:
                 alias: App
 
             SonataMediaBundle: ~
+            ApplicationProjectSettingBundle: ~
             ApplicationProjectSecurityAdminBundle: ~
             ApplicationProjectSecurityUserBundle: ~
 

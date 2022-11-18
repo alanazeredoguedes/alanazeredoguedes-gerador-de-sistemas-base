@@ -21,8 +21,8 @@ use Symfony\Component\Serializer\Serializer;
 use OpenApi\Attributes as OA;
 
 
-#[OA\Tag(name: 'auth')]
-#[Route('/api/user', name: 'api_auth_')]
+#[OA\Tag(name: 'autenticação')]
+#[Route('/api/usuario', name: 'api_auth_usuario')]
 class AuthApiController extends BaseApiController
 {
 
@@ -86,7 +86,7 @@ class AuthApiController extends BaseApiController
             type: 'object'
         )
     )]
-    #[Route('/user_authenticated', name: 'user_authenticated', methods: ['GET'])]
+    #[Route('/usuario_autenticado', name: 'user_authenticated', methods: ['GET'])]
     public function userAuthenticatedAction(Request $request): JsonResponse
     {
         $this->validateAccess("IS_AUTHENTICATED_FULLY");

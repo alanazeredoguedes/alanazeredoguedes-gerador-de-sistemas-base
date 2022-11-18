@@ -2,10 +2,10 @@
 
 namespace App\Application\Project\ContentBundle\Entity;
 
-use App\Application\Project\ContentBundle\Repository\ContentRepository;
+use App\Application\Project\ContentBundle\Repository\SmtpEmailRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ContentRepository::class)]
+#[ORM\Entity(repositoryClass: SmtpEmailRepository::class)]
 class Content
 {
     #[ORM\Id]

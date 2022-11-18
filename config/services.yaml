@@ -52,6 +52,44 @@ services:
     # ####################################################################################
     # serviços padrões da estrutura do projeto
 
+    # Content Bundle
+    project.content.content:
+        class: App\Application\Project\ContentBundle\Admin\ContentAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Application\Project\ContentBundle\Entity\Content,
+                controller: App\Application\Project\ContentBundle\Controller\ContentAdminController,
+                show_in_dashboard: false,
+                on_top: false,
+                group: "Content",
+                label: Content,
+                icon: 'fa fa-solid fa-passport',
+            }
+            #- { name: sonata.admin, manager_type: orm, group: "Content", label: User, on_top: false, icon: 'fa fa-solid fa-user',, show_in_dashboard: false }
+
+    project.content.setting:
+        class: App\Application\Project\SettingBundle\Admin\SmtpEmailAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Application\Project\SettingBundle\Entity\SmtpEmail,
+                controller: App\Application\Project\SettingBundle\Controller\SmtpEmailAdminController,
+                show_in_dashboard: true,
+                on_top: false,
+                group: "Configurações",
+                label: SMTP,
+                icon: 'fas fa-cogs',
+            }
+            #- { name: sonata.admin, manager_type: orm, group: "Content", label: User, on_top: false, icon: 'fa fa-solid fa-user',, show_in_dashboard: false }
+
+
+
+
+
+
     # ####################################################################################
     # Provedor de usuário ADMIN
 
@@ -119,32 +157,6 @@ services:
                 label: Grupos,
                 icon: 'fa fa-solid fa-users',
             }
-
-
-
-
-    # ####################################################################################
-    # Serviços padrões da estrutura do projeto
-
-    # Content Bundle
-    project.content.content:
-        class: App\Application\Project\ContentBundle\Admin\ContentAdmin
-        tags:
-            - {
-                name: sonata.admin,
-                manager_type: orm,
-                model_class: App\Application\Project\ContentBundle\Entity\Content,
-                controller: App\Application\Project\ContentBundle\Controller\ContentAdminController,
-                show_in_dashboard: false,
-                on_top: false,
-                group: "Content",
-                label: Content,
-                icon: 'fa fa-solid fa-passport',
-            }
-            #- { name: sonata.admin, manager_type: orm, group: "Content", label: User, on_top: false, icon: 'fa fa-solid fa-user',, show_in_dashboard: false }
-
-
-
 
     # ####################################################################################
     # por favor, note que as últimas definições sao da estrutura padrão do projeto

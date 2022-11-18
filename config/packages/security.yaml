@@ -48,7 +48,7 @@ security:
             lazy: true
             provider: security.provider.admin.user
             custom_authenticator: App\Application\Project\SecurityAdminBundle\Security\UserAuthenticator
-            #access_denied_handler: App\Application\Project\SecurityAdminBundle\Security\AdminAccessDeniedHandler
+            access_denied_handler: App\Application\Project\SecurityAdminBundle\Security\AdminAccessDeniedHandler
             logout:
                 path: admin_project_content_content_logout
                 target: /admin/login

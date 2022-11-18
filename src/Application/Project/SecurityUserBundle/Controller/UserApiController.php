@@ -17,10 +17,10 @@ use Doctrine\ORM\Query\QueryException;
 use ReflectionException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-#[Route('/api/user', name: 'api_user_')]
-#[OA\Tag(name: 'user', description: 'Acesso ao Usuário')]
+#[Route('/api/usuario', name: 'api_usuario_')]
+#[OA\Tag(name: 'usuario', description: 'Acesso ao Usuário')]
 #[ACL\Api(enable: true, title: 'Usuário', description: 'Permissões do modulo Usuário')]
-class UseApiController extends BaseApiController
+class UserApiController extends BaseApiController
 {
     public function getClass(): string
     {
