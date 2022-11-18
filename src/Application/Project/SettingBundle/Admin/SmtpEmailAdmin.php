@@ -29,7 +29,7 @@ final class SmtpEmailAdmin extends BaseAdmin
         /** Não Remove chamada - Faz controle de acesso painel admin */
         $collection->remove('delete');
         $collection->remove('create');
-
+        $collection->add('testeEmail');
     }
 
     protected function configureFormFields(FormMapper $form): void
