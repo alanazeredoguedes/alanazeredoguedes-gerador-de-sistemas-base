@@ -18,7 +18,7 @@ use Doctrine\ORM\Query\QueryException;
 use ReflectionException;
 
 #[Route('/api/empreendimento', name: 'api_empreendimento_')]
-#[OA\Tag(name: 'Empreendimento', description: 'Acesso ao empreendimento')]
+#[OA\Tag(name: 'empreendimento', description: 'Acesso ao empreendimento')]
 #[ACL\Api(enable: true, title: 'Empreendimento', description: 'Permissões do modulo Empreendimento')]
 class EmpreendimentoApiController extends BaseApiController
 {

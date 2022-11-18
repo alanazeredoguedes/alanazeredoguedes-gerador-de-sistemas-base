@@ -4,11 +4,13 @@ namespace App\Application\Project\ContentBundle\Controller\Base;
 
 use App\Application\Project\ContentBundle\Service\ApiACL;
 use App\Application\Project\ContentBundle\Service\SerializerObjects;
+use Doctrine\Persistence\ManagerRegistry;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use ReflectionObject;
 use Sonata\MediaBundle\Provider\Pool;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class BaseApiController extends AbstractController
@@ -19,6 +21,9 @@ class BaseApiController extends AbstractController
         protected ApiACL $apiACL,
         protected Pool $providerPool,
         protected JWTTokenManagerInterface $JWTTokenManager,
+        protected UserPasswordHasherInterface $passwordHasher,
+        protected ValidatorInterface $validator,
+        protected ManagerRegistry $doctrine
     )
     {
         $this->serializerObjects = new SerializerObjects(providerPool: $this->providerPool);

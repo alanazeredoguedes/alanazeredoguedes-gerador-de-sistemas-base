@@ -17,8 +17,8 @@ sonata_media:
                 - sonata.media.provider.file
                 #- sonata.media.provider.vimeo
             formats:
-                small: { width: 100, quality: 70 }
-                medium: { width: 400, quality: 70 }
+                #small: { width: 100, quality: 70 }
+                #medium: { width: 400, quality: 70 }
                 #big: { width: 1000, quality: 70 }
                 #icon: { width: 32, quality: 70, resizer: your.custom.resizer, resizer_options: { custom_crop: true } }
                 #small: { width: 100, quality: 70 }

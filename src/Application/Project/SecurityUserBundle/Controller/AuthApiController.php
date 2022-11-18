@@ -3,7 +3,6 @@
 namespace App\Application\Project\SecurityUserBundle\Controller;
 
 use App\Application\Project\ContentBundle\Controller\Base\BaseApiController;
-use App\Application\Project\SecurityBundle\Entity\ApiUser;
 use App\Application\Project\SecurityUserBundle\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -23,7 +22,7 @@ use OpenApi\Attributes as OA;
 
 
 #[OA\Tag(name: 'auth')]
-#[Route('/api', name: 'api_auth_')]
+#[Route('/api/user', name: 'api_auth_')]
 class AuthApiController extends BaseApiController
 {
 
@@ -48,9 +47,9 @@ class AuthApiController extends BaseApiController
         )
     )]
     #[Route('/login', name: 'login', methods: ['POST'])]
-    public function loginAction(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher): JsonResponse
+    public function loginAction(Request $request): JsonResponse
     {
-        $entityManager = $doctrine->getManager();
+        $entityManager = $this->doctrine->getManager();
 
         $parameters = [
             'email'     => [ 'type' => 'string', 'required' => true, 'nullable' => false ],
@@ -62,11 +61,10 @@ class AuthApiController extends BaseApiController
         if($this->validateJsonRequestBody($requestBody, $parameters))
             return $this->validateJsonRequestBody($requestBody, $parameters);
 
-
         $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $requestBody->email]);
-        if(!$user || !$passwordHasher->isPasswordValid($user, $requestBody->password))
-            return $this->createResponseStatus(message: 'Invalid access credentials');
 
+        if(!$user || !$this->passwordHasher->isPasswordValid($user, $requestBody->password))
+            return $this->createResponseStatus(message: 'Credenciais invalidas!');
 
         $token = $this->JWTTokenManager->create($user);
 
@@ -80,31 +78,35 @@ class AuthApiController extends BaseApiController
         description: 'Return authenticated user',
         content: new OA\JsonContent(
             properties: [
-                new OA\Property(property: 'id', type: 'int'),
+                new OA\Property(property: 'id', type: 'integer'),
                 new OA\Property(property: 'name', type: 'string'),
                 new OA\Property(property: 'email', type: 'string'),
-                new OA\Property(property: 'groups', type: 'object'),
+                new OA\Property(property: 'roles', type: 'object'),
             ],
             type: 'object'
         )
     )]
     #[Route('/user_authenticated', name: 'user_authenticated', methods: ['GET'])]
-    public function userAuthenticatedAction(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher): JsonResponse
+    public function userAuthenticatedAction(Request $request): JsonResponse
     {
         $this->validateAccess("IS_AUTHENTICATED_FULLY");
 
         $user = $this->getUser();
-        //dd($user);
 
-        $serializer = new Serializer([new ObjectNormalizer()]);
+        $response = $this->serializerObjects->normalizer($user, [
+            'id', 'name','email','roles',
+        ]);
+
+        /*$serializer = new Serializer([new ObjectNormalizer()]);
         $data = $serializer->normalize($user, null, [AbstractNormalizer::ATTRIBUTES => [
             'id', 'name', 'email', 'roles',
             'groups' => ['id', 'name', 'description']
-        ] ]);
+        ] ]);*/
 
-        $data['provider'] = (new ReflectionClass($user))->getShortName();
-
-        return $this->json($data);
+        return $this->json([
+            '@id' => $request->getPathInfo(),
+            'result' => $response,
+        ]);
     }
 
 

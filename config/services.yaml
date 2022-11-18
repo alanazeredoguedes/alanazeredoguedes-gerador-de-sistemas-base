@@ -175,7 +175,7 @@ services:
                 controller: App\Application\Internit\StatusEmpreendimentoBundle\Controller\StatusEmpreendimentoAdminController,
                 show_in_dashboard: true,
                 on_top: true,
-                group: "StatusEmpreendimento",
+                group: "Status do Empreendimento",
                 label: StatusEmpreendimento,
                 icon: 'fa fa-solid fa-book',
             }

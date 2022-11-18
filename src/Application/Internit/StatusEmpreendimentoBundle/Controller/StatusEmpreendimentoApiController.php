@@ -19,7 +19,7 @@ use ReflectionException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/api/statusEmpreendimento', name: 'api_statusEmpreendimento_')]
-#[OA\Tag(name: 'StatusEmpreendimento', description: 'Acesso ao statusEmpreendimento')]
+#[OA\Tag(name: 'statusEmpreendimento', description: 'Acesso ao statusEmpreendimento')]
 #[ACL\Api(enable: true, title: 'StatusEmpreendimento', description: 'Permissões do modulo StatusEmpreendimento')]
 class StatusEmpreendimentoApiController extends BaseApiController
 {
